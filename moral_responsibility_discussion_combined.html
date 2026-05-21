@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESL CONNECT - Moral Responsibility & Free Will | ESLCONNECT TEMPLATE</title>
+<style>
+:root {
+  --navy:#06142A;
+  --blue:#12325F;
+  --teal:#3c6e71;
+  --cream:#f7f3e8;
+  --white:#ffffff;
+  --coral:#d96c4a;
+  --soft:#eef4f4;
+  --ink:#132238;
+  --yellow-frame:#FFF9C4;
+  --shortcut-hover:#FFD84D;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink);line-height:1.58}
+header{background:var(--navy);color:var(--white);padding:30px 22px 34px}
+.header-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:center}
+.brand-logo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:96px;
+  height:96px;
+  border-radius:18px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.22);
+  margin-bottom:16px;
+  text-decoration:none;
+  border:2px solid var(--yellow-frame);
+  box-sizing:border-box;
+}
+.brand-logo img{width:100%;height:100%;object-fit:cover;display:block}
+h1{margin:0 0 10px;font-size:clamp(2rem,4vw,3.35rem);line-height:1.05}
+.subtitle{max-width:780px;font-size:1.05rem;opacity:.95;margin:0}
+.video-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);padding:12px;border-radius:22px;box-shadow:0 14px 30px rgba(0,0,0,.22)}
+.video-card a{color:var(--white);text-decoration:none;display:block}
+.thumb-wrap{position:relative;overflow:hidden;border-radius:16px;background:var(--navy);aspect-ratio:16/9}
+.thumb-wrap img{width:100%;height:100%;object-fit:cover;display:block;opacity:.94;transition:transform .25s ease,opacity .25s ease}
+.video-card:hover img{transform:scale(1.04);opacity:1}
+.play{position:absolute;inset:0;display:grid;place-items:center}
+.play span{width:68px;height:48px;border-radius:16px;background:var(--coral);display:grid;place-items:center;font-size:1.6rem;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.video-title{margin:10px 4px 2px;font-weight:700}
+main{max-width:1120px;margin:0 auto;padding:24px 18px 46px}
+.template-nav{background:var(--white);border-radius:24px;padding:16px;margin-bottom:22px;border:1px solid rgba(19,34,56,.12);box-shadow:0 10px 26px rgba(19,34,56,.08)}
+.progress-wrap{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;margin-bottom:14px}
+.progress-track{height:12px;border-radius:999px;overflow:hidden;background:#e7e0d2}
+.progress-fill{height:100%;width:0;background:var(--teal);transition:width .25s ease}
+.section-counter{font-weight:800;color:var(--blue);white-space:nowrap}
+.shortcut-row,.page-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.page-controls{margin-top:14px;justify-content:space-between}
+button{border:0;background:var(--teal);color:var(--white);font-weight:700;padding:10px 14px;border-radius:12px;cursor:pointer;transition:transform .15s ease,background .15s ease}
+button:hover{transform:translateY(-1px);background:var(--blue)}
+button.reset-btn{background:var(--coral)}
+button.shortcut-btn{background:#fff;color:var(--blue);border:1px solid rgba(19,34,56,.18);padding:8px 10px;font-size:.92rem}
+button.shortcut-btn.active{background:var(--blue);color:#fff}
+button.shortcut-btn:hover,button.shortcut-btn.active:hover{background:var(--shortcut-hover)!important;color:var(--navy)!important;border-color:var(--shortcut-hover)!important}
+.page-section{display:none;background:var(--white);border-radius:24px;padding:24px;margin-bottom:22px;border:1px solid rgba(19,34,56,.12);box-shadow:0 10px 26px rgba(19,34,56,.08)}
+.page-section.active{display:block}
+h2{margin:0 0 12px;font-size:1.45rem;color:var(--blue)}
+.note,.video-note,.grammar-note,.discuss-hint-box{background:var(--cream);border-left:5px solid var(--coral);padding:12px 14px;border-radius:12px;margin:14px 0;color:var(--ink)}
+.two-col,.match-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.question-list,.discussion{display:grid;gap:12px}
+.q,.q-card,.vocab-card,.grammar-block,.discuss-card,.gap-section,.video-tasks,.gf-passage{background:#fbfaf6;border:1px solid rgba(19,34,56,.10);padding:14px;border-radius:16px;margin-bottom:12px}
+.q label{display:block;font-weight:700;margin-bottom:6px}
+select,input[type="text"],textarea,.gf-select,.gap-input{border:1.5px solid rgba(19,34,56,.24);border-radius:10px;padding:8px 10px;font:inherit;color:var(--ink);background:#fff}
+textarea{width:100%;min-height:92px;resize:vertical}
+.choices{background:var(--cream);border-radius:18px;padding:16px;position:sticky;top:12px}
+.choice-grid,.drag-bank{display:grid;gap:8px}
+.choice,.drag-item,.word-chip{background:#fff;border:1px solid rgba(19,34,56,.14);padding:9px 11px;border-radius:12px;font-weight:700}
+.answers{display:none;margin-top:14px;padding:14px;background:var(--soft);border:1px solid rgba(60,110,113,.25);border-radius:16px}
+.answers.show{display:block}
+.check-result,.gap-result,.gf-result-msg{margin-top:10px;font-weight:800}
+.correct,.ok{color:#236147}
+.wrong,.no{color:#a6422b}
+.drag-item,.word-chip{cursor:grab;user-select:none;box-shadow:0 4px 10px rgba(19,34,56,.06)}
+.drop-zone,.def-slot{min-height:44px;margin-top:8px;border:2px dashed rgba(60,110,113,.45);border-radius:12px;background:#fff;padding:8px;color:rgba(19,34,56,.75)}
+.drop-zone.over,.def-slot.drag-over{background:var(--soft);border-color:var(--teal)}
+.gf-passage{font-size:1rem;line-height:2.2}
+.gf-select.correct,.q-opt-btn.correct{background:var(--soft);border-color:#236147;color:#236147}
+.gf-select.wrong,.q-opt-btn.wrong{background:#fdecea;border-color:#a6422b;color:#a6422b}
+.q-opt-btn{width:100%;text-align:left;background:#fff;color:var(--ink);border:1px solid rgba(19,34,56,.14);margin:6px 0}
+.q-feedback{display:none;margin-top:8px;padding:10px;border-radius:10px;background:var(--soft)}
+.q-feedback.show{display:block}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.vocab-back,.grammar-body,.discuss-body{display:none}
+.vocab-card.open .vocab-back,.grammar-block.open .grammar-body,.discuss-card.open .discuss-body{display:block}
+.vocab-word-title{font-weight:800;color:var(--blue);font-size:1.05rem}
+.vocab-pos-badge,.tag,.nav-count,.section-intro,.header-eyebrow{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--coral)}
+.useful-table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:16px;border:1px solid rgba(19,34,56,.14);margin:14px 0;background:#fff}
+.useful-table th,.useful-table td{text-align:left;padding:12px;border-bottom:1px solid rgba(19,34,56,.10);vertical-align:top}
+.useful-table th{background:var(--blue);color:#fff}
+footer{text-align:center;padding:22px;color:var(--blue);font-size:.92rem}
+@media(max-width:840px){.header-wrap,.two-col,.match-wrap,.progress-wrap{grid-template-columns:1fr}.choices{position:static}.brand-logo{width:88px;height:88px}.shortcut-btn,.page-controls button{width:100%}}
+</style>
+
+<style id="phrasal-gapfill-additions">
+.match-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid rgba(19,34,56,.14);
+  margin:14px 0;
+  background:#fff;
+}
+.match-table th,.match-table td{
+  text-align:left;
+  padding:12px;
+  border-bottom:1px solid rgba(19,34,56,.10);
+  vertical-align:top;
+}
+.match-table th{
+  background:var(--blue,#12325F);
+  color:#fff;
+}
+.match-table tr:last-child td{border-bottom:0;}
+.transcript-gap-five{
+  background:#fbfaf6;
+  border:1px solid rgba(19,34,56,.12);
+  border-radius:18px;
+  padding:18px;
+  line-height:1.9;
+}
+.transcript-gap-five p{margin:0 0 16px;}
+.transcript-gap-five p:last-child{margin-bottom:0;}
+.inline-gap{
+  display:inline-block;
+  width:auto;
+  min-width:155px;
+  margin:0 4px;
+  padding:6px 8px;
+  vertical-align:middle;
+}
+</style>
+
+
+<style id="grammar-concession-fix">
+.page-section input[type="text"]{
+  width:100%;
+  margin-top:6px;
+}
+.page-section h3{
+  color:var(--blue,#12325F);
+  margin:18px 0 10px;
+}
+.page-section ul{
+  margin:10px 0 10px 22px;
+}
+</style>
+
+
+<style id="discussion-combined-fix">
+.discussion-question-list{
+  background:#fbfaf6;
+  border:1px solid rgba(19,34,56,.12);
+  border-radius:18px;
+  padding:16px 18px;
+  margin:18px 0;
+}
+.discussion-question-list h3{
+  color:var(--blue,#12325F);
+  margin:0 0 10px;
+}
+.discussion-question-list ol{
+  margin:0;
+  padding-left:22px;
+}
+.discussion-question-list li{
+  margin:10px 0;
+  line-height:1.55;
+}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="header-wrap">
+    <div>
+      <a class="brand-logo" href="https://www.eslconnect.net/" target="_blank" rel="noopener" aria-label="Visit ESL CONNECT website">
+        <img src="data:image/jpeg;base64,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T0a2rg73Q/pLIWTEN0LcBeQszkm7SjknF3OkSF7OQLNMbZxb4otQuOvU/QcJd7yNbsZJDT4mrfMgiSXyA2eR6CNqeCS+hOnYRQ9nspvrEob4QlDZKDxy6HwTcnBHsohY08IdgFHLmfHlPJNl+TiRfHnDo1tXB3upJwF5DmHNPCkr6tQ27ByTi7nWUKOHhw9mQmjAAJPRwWjzcp+g4S73kNh5zJgg8hkIDBDZmt8PTdjwYKzAJjzLyhOzmVNeRrDPTs1b5h5BrgxBvTfAwcuLCcdFY/OEHOBz8J/3KPGavmyOWUD7ZEWArl8ew8GKigmPoUHQGFPow3LigQNsCIeGPtFACCQDvBY6JsicJmVFCQXDjINVCpuJrQVtX311tXB3up1g6fEJFEEzELMhmB9Xdg5JxdzqCxcQKFpYvRI/M/6p+g4S6g0SRy1L1Pb27du01e1BY4hAiIPMSEigs4ycssDWUewrHkQwOIMMijMRSDNHK3QTNA+2TJwOSL34sFMr0XM7+09mrf8AwIeQg2AXCx4QDXl5xDFfWHe1R4JOSOSeydDYQeQh0WSYJzDFNgnUNUOSROL4sA+ey1DiC57BuTsm2IDlMsOwhqXIDACE2VEbdEtALz0jxEGDHDGBBEimmwAYOYMIAAdhIIRZAMDYQYFekEceQXDo0/NiCwFwY92uuuuso91Ac4DqJAJAA6xHhCBcOIQ5CxDQjqjkohckzPbYA23PgP8AhhWUxoY5KpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKHTLRI2/+PL/2gAMAwEAAgADAAAAEG222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222+kk26S28222222222222222222222223CSU6ZT2m222222222222222222222224228m300222222222222222222222223G23jm22m22222222222222222222222zbY26Km0222222222222222222222223G2222cGm222222222222222222222224223m2E0222222222222222222222223NtlUNMnttm222222222222222222222wAAWPfW4ABm222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222229XG21+25G2K6m26/JJG2SK/JJE22223+q03syY2IGxn8Wy2q22wiYyG82m22221G2Ay23uws2M+S2W0W23+2xm2G222223e228G2x2KQxn5wy2i22y2222w2222228223i22yxWcM/HQW0pJHm2222G222223W229G2x2K2Bn4zi2i2262222w2222228G3Ey23mxW5s/G1G0W23S2+W2G22222387r2t3Q2K3hn4382q22AFSg2w22222222R22462422q6W2K/JJI3b+23G2222222222222222222222222222222222222222222222222222222222222222222225JJJJJJJJJJJJJJJJJJJJJJJJIG22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222223//xAArEQABAgMHBAMBAQEBAAAAAAABABExsfAQICFBYXGhUZHB0TBQ4YFwoED/2gAIAQMBAT8Q/wCLIecArWrWrWrWpjLG0G/gmtPlA38srhG9ufYhMQATWx2Wx2Wx2Wx2WZ+yjLQao1gYdyq7I9gcdis3NYHVEEFjZIE/sZAneCOaZHI5QLjnmIYQM9kgT+xkCd58MkcRjmYRCYGN6QJ/Y7cY99E6nU6tsbWP9twoYjogCzG4dZy2x9rM7iL4LZAn9jIE/iiUEJI8Zp9GGVkgT+xkCd4vB4DLqjGLK4JLaMERp7skCf2LENyQJquyrsq7KuybWM6A8hOUFg7j8RzAONFqexRTJvgik7lTBFMQ2MQ3JAmq7Kuyrsq7IiGx+sDzYDRaw7LWHZaw7LWHZNvRYQnJisBJfdaLlYaGG36jrjm0PNgNFrDstYdlrDstYdkcxz/tYt8DstcV/FjuLZEEmNwiw5WMs26I8x3/ABYxhXCrDlFWGuDEQppDGxmblM5Ye4A5YJiYz7WEFEKqke1VI9qqR7VUj2qpHu5iuBrgtcV/FjOLZEEFjYDPgdQqpHtVSPaqke1VI9qqR7TcmPxgElgs3sv1EGFhyiTF6NYnGqZ4MA7j2ERxhZlszKYw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" alt="ESL CONNECT">
+      </a>
+      <h1>Moral Responsibility & Free Will</h1>
+      <p class="subtitle">A C1 ESL CONNECT lesson on JoJo’s case, free will, determinism and whether people can be held responsible for actions shaped by their upbringing.</p>
+    </div>
+    <div class="video-card">
+      <a href="https://www.youtube.com/watch?v=BT93bRX2t68" target="_blank" rel="noopener">
+        <div class="thumb-wrap" onerror="this.src='https://img.youtube.com/vi/BT93bRX2t68/hqdefault.jpg'">
+          <img src="https://img.youtube.com/vi/BT93bRX2t68/maxresdefault.jpg" alt="The infamous JoJo thought experiment video thumbnail" onerror="this.src='https://img.youtube.com/vi/BT93bRX2t68/hqdefault.jpg'">
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="video-title">Open the video</div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="template-nav">
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="section-counter" id="sectionCounter">Section 1 of 8</div>
+    </div>
+    <div class="shortcut-row" id="shortcutRow"></div>
+    <div class="page-controls">
+      <button onclick="previousPage()">Previous page</button>
+      <button onclick="nextPage()">Next page</button>
+      <button class="reset-btn" onclick="resetWorksheet()">Reset worksheet</button>
+    </div>
+  </div>
+
+  <section class="page-section" data-title="Before watching">
+    <h2>1. Before watching: moral responsibility</h2>
+    <p class="note">Discuss before watching. Focus on the link between upbringing, choice and blame.</p>
+    <div class="discussion">
+      <div class="q"><label>1. If someone has been raised to believe cruelty is normal, can they still be fully responsible for cruel actions?</label></div>
+      <div class="q"><label>2. What is the difference between explaining someone’s behaviour and excusing it?</label></div>
+      <div class="q"><label>3. Should moral responsibility depend on whether a person could realistically have chosen differently?</label></div>
+    </div>
+  </section>
+
+  <section class="page-section" data-title="Watch">
+    <h2>2. Watch: JoJo’s case</h2>
+    <a href="https://www.youtube.com/watch?v=BT93bRX2t68" target="_blank" rel="noopener" style="display:block;text-decoration:none;margin-bottom:1.5rem;"> <div style="position:relative;width:100%;padding-bottom:56.25%;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.12);background:#111;cursor:pointer;"> <img src="https://img.youtube.com/vi/BT93bRX2t68/maxresdefault.jpg" onerror="this.src=&#39;https://img.youtube.com/vi/BT93bRX2t68/hqdefault.jpg&#39;" alt="The infamous JoJo thought experiment video thumbnail" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform 0.3s;"> <div style="position:absolute;inset:0;background:rgba(0,0,0,0.28);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;"> <svg viewBox="0 0 68 48" width="72" height="51" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5))"><path d="M66.5 7.7c-.8-2.9-3-5.1-5.9-5.9C55.8 0 34 0 34 0S12.2 0 7.4 1.8C4.5 2.6 2.3 4.8 1.5 7.7 0 12.5 0 24 0 24s0 11.5 1.5 16.3c.8 2.9 3 5.1 5.9 5.9C12.2 48 34 48 34 48s21.8 0 26.6-1.8c2.9-.8 5.1-3 5.9-5.9C68 35.5 68 24 68 24s0-11.5-1.5-16.3z" fill="#ff0000"></path><path d="M27 34l18-10-18-10v20z" fill="#fff"></path></svg> <span style="font-family:&#39;DM Sans&#39;,sans-serif;font-size:14px;font-weight:500;color:#fff;background:rgba(0,0,0,0.55);padding:6px 18px;border-radius:20px;letter-spacing:0.02em;">Watch on YouTube</span> </div> </div> </a> <div class="video-note"> <strong>Before you watch:</strong> The video explores a philosophical thought experiment about a dictator's son raised in total isolation from normal society. As you watch, ask yourself: <em>Is JoJo responsible for his actions? Does your answer change as the video progresses?</em> </div> <div class="video-tasks"> <div class="vtask-title">While you watch — focus tasks</div> <ul class="vtask-list"> <li><span class="vtask-num">1st watch</span> Get the overall argument. Who is JoJo, and why does his case pose a problem for ordinary moral judgement?</li> <li><span class="vtask-num">2nd watch</span> Listen carefully for the names of the philosophers and their specific positions. How does Wolf's view differ from Watson and Frankfurt's?</li> <li><span class="vtask-num">Vocabulary</span> Listen out for: <em>appease, duress, atypical, predetermined, transcend</em>. Can you infer their meaning from context before checking the Vocabulary tab?</li> <li><span class="vtask-num">After</span> Try the Gap Fill tab next — it tests the first minute of the video in detail — then work through Vocabulary, Grammar and Comprehension.</li> </ul> </div>
+  </section>
+
+  <section class="page-section" data-title="Comprehension">
+    <h2>3. Comprehension</h2>
+    <div class="quiz-progress"> <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div> <span class="prog-text" id="prog-text">0 / 6</span> <span class="score-pill" id="score-pill"></span> </div> <div id="quiz-list"><div class="q-card"> <div class="q-header"> <div class="q-label-small">Question 1 of 6</div> <div class="q-text-main">According to the Deep Self View, when are people less morally responsible for their actions?</div> </div> <div class="q-options"> <button class="q-opt-btn" data-qi="0" data-oi="0" onclick="answerQ(0,0)"> <span class="opt-marker">A</span> <span>When they were raised in an unusual environment</span> </button> <button class="q-opt-btn" data-qi="0" data-oi="1" onclick="answerQ(0,1)"> <span class="opt-marker">B</span> <span>When actions are performed under external forces like duress or intoxication</span> </button> <button class="q-opt-btn" data-qi="0" data-oi="2" onclick="answerQ(0,2)"> <span class="opt-marker">C</span> <span>When they lack knowledge of right and wrong</span> </button> <button class="q-opt-btn" data-qi="0" data-oi="3" onclick="answerQ(0,3)"> <span class="opt-marker">D</span> <span>When their values were shaped by their parents</span> </button> <div class="q-feedback" id="fb0"></div> </div></div><div class="q-card"> <div class="q-header"> <div class="q-label-small">Question 2 of 6</div> <div class="q-text-main">What is Susan Wolf's key objection to the Deep Self View?</div> </div> <div class="q-options"> <button class="q-opt-btn" data-qi="1" data-oi="0" onclick="answerQ(1,0)"> <span class="opt-marker">A</span> <span>It ignores the role of genetics in forming values</span> </button> <button class="q-opt-btn" data-qi="1" data-oi="1" onclick="answerQ(1,1)"> <span class="opt-marker">B</span> <span>It focuses too much on intoxication as an excuse</span> </button> <button class="q-opt-btn" data-qi="1" data-oi="2" onclick="answerQ(1,2)"> <span class="opt-marker">C</span> <span>It fails to consider how a person's deep self was formed</span> </button> <button class="q-opt-btn" data-qi="1" data-oi="3" onclick="answerQ(1,3)"> <span class="opt-marker">D</span> <span>It cannot explain why JoJo acts cruelly as an adult</span> </button> <div class="q-feedback" id="fb1"></div> </div></div><div class="q-card"> <div class="q-header"> <div class="q-label-small">Question 3 of 6</div> <div class="q-text-main">What does it mean that JoJo 'lacks moral competence' according to Wolf?</div> </div> <div class="q-options"> <button class="q-opt-btn" data-qi="2" data-oi="0" onclick="answerQ(2,0)"> <span class="opt-marker">A</span> <span>He is mentally ill and cannot be tried in court</span> </button> <button class="q-opt-btn" data-qi="2" data-oi="1" onclick="answerQ(2,1)"> <span class="opt-marker">B</span> <span>He doesn't know right from wrong and cannot learn the difference</span> </button> <button class="q-opt-btn" data-qi="2" data-oi="2" onclick="answerQ(2,2)"> <span class="opt-marker">C</span> <span>He was never taught any philosophy</span> </button> <button class="q-opt-btn" data-qi="2" data-oi="3" onclick="answerQ(2,3)"> <span class="opt-marker">D</span> <span>He lacks the intelligence to understand consequences</span> </button> <div class="q-feedback" id="fb2"></div> </div></div><div class="q-card"> <div class="q-header"> <div class="q-label-small">Question 4 of 6</div> <div class="q-text-main">What is the significance of introducing JoJa (JoJo's sister) in the argument?</div> </div> <div class="q-options"> <button class="q-opt-btn" data-qi="3" data-oi="0" onclick="answerQ(3,0)"> <span class="opt-marker">A</span> <span>She shows that women develop stronger moral instincts</span> </button> <button class="q-opt-btn" data-qi="3" data-oi="1" onclick="answerQ(3,1)"> <span class="opt-marker">B</span> <span>She proves environment is the only factor in moral development</span> </button> <button class="q-opt-btn" data-qi="3" data-oi="2" onclick="answerQ(3,2)"> <span class="opt-marker">C</span> <span>Her different values in the same environment suggest JoJo could have chosen differently — increasing his responsibility</span> </button> <button class="q-opt-btn" data-qi="3" data-oi="3" onclick="answerQ(3,3)"> <span class="opt-marker">D</span> <span>She confirms that JoJo is not responsible because she had a better character</span> </button> <div class="q-feedback" id="fb3"></div> </div></div><div class="q-card"> <div class="q-header"> <div class="q-label-small">Question 5 of 6</div> <div class="q-text-main">Which statement best describes the incompatibilist position?</div> </div> <div class="q-options"> <button class="q-opt-btn" data-qi="4" data-oi="0" onclick="answerQ(4,0)"> <span class="opt-marker">A</span> <span>People can be responsible even if their choices were causally determined</span> </button> <button class="q-opt-btn" data-qi="4" data-oi="1" onclick="answerQ(4,1)"> <span class="opt-marker">B</span> <span>Free will and moral responsibility are compatible with determinism</span> </button> <button class="q-opt-btn" data-qi="4" data-oi="2" onclick="answerQ(4,2)"> <span class="opt-marker">C</span> <span>If all actions are predetermined, nobody can be truly morally responsible</span> </button> <button class="q-opt-btn" data-qi="4" data-oi="3" onclick="answerQ(4,3)"> <span class="opt-marker">D</span> <span>Upbringing determines character but not responsibility</span> </button> <div class="q-feedback" id="fb4"></div> </div></div><div class="q-card"> <div class="q-header"> <div class="q-label-small">Question 6 of 6</div> <div class="q-text-main">The word 'appease' (used about Jo's servants) most closely implies:</div> </div> <div class="q-options"> <button class="q-opt-btn" data-qi="5" data-oi="0" onclick="answerQ(5,0)"> <span class="opt-marker">A</span> <span>To sincerely admire and publicly praise someone</span> </button> <button class="q-opt-btn" data-qi="5" data-oi="1" onclick="answerQ(5,1)"> <span class="opt-marker">B</span> <span>To satisfy someone by complying, often out of fear rather than genuine agreement</span> </button> <button class="q-opt-btn" data-qi="5" data-oi="2" onclick="answerQ(5,2)"> <span class="opt-marker">C</span> <span>To formally accept a legal or political judgment</span> </button> <button class="q-opt-btn" data-qi="5" data-oi="3" onclick="answerQ(5,3)"> <span class="opt-marker">D</span> <span>To challenge someone's authority through diplomatic means</span> </button> <div class="q-feedback" id="fb5"></div> </div></div></div>
+  </section>
+
+  <section class="page-section" data-title="Five-paragraph gap-fill">
+  <h2>4. Transcript-based gap-fill: JoJo’s case</h2>
+  <p class="note">Choose the best word or phrase from each dropdown. The five paragraphs are adapted from the video’s ideas and language for classroom use.</p>
+  <div class="transcript-gap-five">
+    <p>
+      Jo the First is presented as a 
+      <select class="inline-gap" data-answer="ruthless"><option value="">Choose...</option><option>ruthless</option><option>restless</option><option>reckless</option></select>
+      dictator who rules through fear. When he wants something, people hurry to 
+      <select class="inline-gap" data-answer="appease"><option value="">Choose...</option><option>appease</option><option>approach</option><option>appeal</option></select>
+      him, and anyone who complains risks being banished. From the outside, his rule appears brutal and unjust.
+    </p>
+
+    <p>
+      JoJo, however, grows up inside the castle and sees a very different version of reality. He does not witness the fear or suffering of ordinary people; instead, he sees his father’s power, the servants’ 
+      <select class="inline-gap" data-answer="obedience"><option value="">Choose...</option><option>obedience</option><option>objection</option><option>obligation</option></select>,
+      and constant praise. As a result, his moral outlook is shaped by an extremely 
+      <select class="inline-gap" data-answer="atypical"><option value="">Choose...</option><option>atypical</option><option>accurate</option><option>ordinary</option></select>
+      upbringing.
+    </p>
+
+    <p>
+      When JoJo inherits his father’s role, his actions are clearly wrong, but the case raises a deeper question: does he bear full moral 
+      <select class="inline-gap" data-answer="responsibility"><option value="">Choose...</option><option>responsibility</option><option>reliability</option><option>rationality</option></select>
+      for them? The example helps to 
+      <select class="inline-gap" data-answer="shed light on"><option value="">Choose...</option><option>shed light on</option><option>turn away from</option><option>look down on</option></select>
+      less extreme cases where people’s values have been formed by their environment.
+    </p>
+
+    <p>
+      According to the Deep Self View, people are responsible when their actions reflect their deeper values, unless they are acting under 
+      <select class="inline-gap" data-answer="duress"><option value="">Choose...</option><option>duress</option><option>desire</option><option>distraction</option></select>
+      or another external force. Susan Wolf challenges this by asking how those values were formed in the first place. In JoJo’s case, his “deep self” may have been 
+      <select class="inline-gap" data-answer="compromised"><option value="">Choose...</option><option>compromised</option><option>confirmed</option><option>celebrated</option></select>
+      by the moral world he inherited.
+    </p>
+
+    <p>
+      The debate becomes even more complex when JoJo’s sister, JoJa, is introduced. If she was raised in similar conditions but rejected their father’s tyranny, this may suggest that JoJo could have 
+      <select class="inline-gap" data-answer="chosen"><option value="">Choose...</option><option>chosen</option><option>copied</option><option>ignored</option></select>
+      differently. The thought experiment therefore forces us to ask whether moral agency can 
+      <select class="inline-gap" data-answer="transcend"><option value="">Choose...</option><option>transcend</option><option>translate</option><option>transfer</option></select>
+      upbringing, conditioning and social environment.
+    </p>
+
+    <button onclick="checkSelects(this)">Check section</button><div class="check-result"></div>
+  </div>
+  <div class="answers"><strong>Answers:</strong> ruthless, appease, obedience, atypical, responsibility, shed light on, duress, compromised, chosen, transcend.</div>
+  <button onclick="toggleAnswers(this)">Reveal / hide answers</button>
+</section>
+
+  <section class="page-section" data-title="Phrasal verbs">
+  <h2>5. Phrasal verb matching</h2>
+  <p class="note">Match each phrasal verb or verb phrase from the topic with the best meaning. These expressions are useful when discussing responsibility, upbringing and moral judgement.</p>
+  <div class="two-col">
+    <div class="question-list">
+      <div class="q"><label>1. shed light on</label><select data-answer="C"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      <div class="q"><label>2. grow up</label><select data-answer="A"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      <div class="q"><label>3. act on</label><select data-answer="E"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      <div class="q"><label>4. hold someone responsible</label><select data-answer="B"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      <div class="q"><label>5. bring up</label><select data-answer="F"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      <div class="q"><label>6. point out</label><select data-answer="D"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+      <button onclick="checkSelects(this)">Check section</button><div class="check-result"></div>
+    </div>
+    <aside class="choices">
+      <h3>Answer choices</h3>
+      <div class="choice-grid">
+        <div class="choice">A. become an adult after being raised in a particular environment</div>
+        <div class="choice">B. consider someone morally or legally accountable</div>
+        <div class="choice">C. help explain or clarify something difficult</div>
+        <div class="choice">D. draw attention to an important fact or problem</div>
+        <div class="choice">E. behave according to a belief, desire or value</div>
+        <div class="choice">F. raise a child or educate someone in a certain way</div>
+      </div>
+    </aside>
+  </div>
+  <div class="answers"><strong>Answers:</strong> 1 C, 2 A, 3 E, 4 B, 5 F, 6 D.</div>
+  <button onclick="toggleAnswers(this)">Reveal / hide answers</button>
+</section>
+
+  <section class="page-section" data-title="Vocabulary">
+    <h2>6. Vocabulary</h2>
+    <!-- MATCHING EXERCISE --> <div class="match-wrap" id="match-wrap"> <div class="match-col"> <div class="match-col-label">Words</div> <div id="word-bank"><div class="word-chip" draggable="true" data-word="to shed light on" id="chip-to_shed_light_on">to shed light on</div><div class="word-chip" draggable="true" data-word="to bear responsibility" id="chip-to_bear_responsibility">to bear responsibility</div><div class="word-chip" draggable="true" data-word="duress" id="chip-duress">duress</div><div class="word-chip" draggable="true" data-word="to transcend" id="chip-to_transcend">to transcend</div><div class="word-chip" draggable="true" data-word="incompatibilist" id="chip-incompatibilist">incompatibilist</div><div class="word-chip" draggable="true" data-word="predetermined" id="chip-predetermined">predetermined</div><div class="word-chip" draggable="true" data-word="to banish" id="chip-to_banish">to banish</div><div class="word-chip" draggable="true" data-word="to appease" id="chip-to_appease">to appease</div><div class="word-chip" draggable="true" data-word="atypical" id="chip-atypical">atypical</div><div class="word-chip" draggable="true" data-word="compatibilist" id="chip-compatibilist">compatibilist</div></div> </div> <div class="match-col"> <div class="match-col-label">Definitions</div> <div id="def-slots"><div class="def-slot" data-correct="incompatibilist" data-idx="0"><div class="def-slot-text">One who holds that free will and determinism cannot both be true, so nobody is truly morally responsible.</div><div class="placed-area"></div><div class="correct-ans" id="correct-0"></div></div><div class="def-slot" data-correct="to banish" data-idx="1"><div class="def-slot-text">To send someone away permanently as a punishment; to exile.</div><div class="placed-area"></div><div class="correct-ans" id="correct-1"></div></div><div class="def-slot" data-correct="to appease" data-idx="2"><div class="def-slot-text">To pacify someone by giving in to their demands — often out of fear rather than genuine agreement.</div><div class="placed-area"></div><div class="correct-ans" id="correct-2"></div></div><div class="def-slot" data-correct="to shed light on" data-idx="3"><div class="def-slot-text">To clarify or help explain something that was previously unclear.</div><div class="placed-area"></div><div class="correct-ans" id="correct-3"></div></div><div class="def-slot" data-correct="to bear responsibility" data-idx="4"><div class="def-slot-text">To carry or have responsibility for something, often implying a burden or obligation.</div><div class="placed-area"></div><div class="correct-ans" id="correct-4"></div></div><div class="def-slot" data-correct="to transcend" data-idx="5"><div class="def-slot-text">To go beyond the limits of something; to rise above a constraint.</div><div class="placed-area"></div><div class="correct-ans" id="correct-5"></div></div><div class="def-slot" data-correct="predetermined" data-idx="6"><div class="def-slot-text">Decided or fixed in advance by prior causes; not a result of free choice.</div><div class="placed-area"></div><div class="correct-ans" id="correct-6"></div></div><div class="def-slot" data-correct="atypical" data-idx="7"><div class="def-slot-text">Not typical or usual; deviating from what is standard or expected.</div><div class="placed-area"></div><div class="correct-ans" id="correct-7"></div></div><div class="def-slot" data-correct="duress" data-idx="8"><div class="def-slot-text">Threats or psychological pressure used to make someone act against their will.</div><div class="placed-area"></div><div class="correct-ans" id="correct-8"></div></div><div class="def-slot" data-correct="compatibilist" data-idx="9"><div class="def-slot-text">One who argues free will and determinism can coexist, so people can still be held responsible.</div><div class="placed-area"></div><div class="correct-ans" id="correct-9"></div></div></div> </div> </div> <div class="match-controls"> <button class="check-gap-btn" onclick="checkMatch()">Check matches</button> <button class="gf-reset-btn" onclick="resetMatch()">Reset</button> <span class="gf-score" id="match-score"></span> </div> <div class="gf-result-msg" id="match-result"></div> <!-- FLIP CARDS --> <div class="section-intro" style="margin-top:2.5rem;">Part 2 — click any word to reveal full definition, example, and register</div> <div class="vocab-grid" id="vocab-grid"><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">to bear responsibility</div> <span class="vocab-pos-badge">verb phrase</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">To carry or have responsibility for something, often implying a burden or obligation.</div> <div class="vocab-ex-text">"Does he bear full moral responsibility for his actions?"</div> <span class="vocab-register">C1 — formal register</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">duress</div> <span class="vocab-pos-badge">noun [U]</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">Threats, violence, or psychological pressure used to make someone act against their will.</div> <div class="vocab-ex-text">"…committing a crime under duress or while intoxicated."</div> <span class="vocab-register">C1 — legal/formal</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">predetermined</div> <span class="vocab-pos-badge">adjective</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">Decided or fixed in advance by fate, genetics, or prior causes; not a result of free choice.</div> <div class="vocab-ex-text">"…if everything is predetermined by factors like our environment or biology…"</div> <span class="vocab-register">C1 — academic</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">incompatibilist</div> <span class="vocab-pos-badge">noun / adjective</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">A philosopher who holds that free will and determinism cannot both be true, and that therefore no one is truly morally responsible.</div> <div class="vocab-ex-text">"This is the attitude held by incompatibilists."</div> <span class="vocab-register">C1 — specialist philosophical vocabulary</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">compatibilist</div> <span class="vocab-pos-badge">noun / adjective</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">A philosopher who argues free will and determinism can coexist, and that people can still be held responsible even if events are causally determined.</div> <div class="vocab-ex-text">"Compatibilist philosophers argue that even if our decisions are the inevitable result of past events, we can still be held responsible."</div> <span class="vocab-register">C1 — specialist philosophical vocabulary</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">to appease</div> <span class="vocab-pos-badge">verb [T]</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">To pacify or satisfy someone, often by giving in to their demands — frequently out of fear rather than genuine agreement.</div> <div class="vocab-ex-text">"…everyone hurries to appease him."</div> <span class="vocab-register">C1 — often carries a negative connotation of cowardly compliance</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">to transcend</div> <span class="vocab-pos-badge">verb [T]</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">To go beyond the limits or scope of something; to rise above a constraint.</div> <div class="vocab-ex-text">"Can our understanding of right and wrong transcend our upbringing?"</div> <span class="vocab-register">C1 — academic/formal, common in philosophical writing</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">atypical</div> <span class="vocab-pos-badge">adjective</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">Not typical or usual; deviating from what is standard or expected.</div> <div class="vocab-ex-text">"…he was raised in a very atypical environment."</div> <span class="vocab-register">C1 — academic neutral</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">to shed light on</div> <span class="vocab-pos-badge">verb phrase (idiomatic)</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">To clarify or help explain something that was previously unclear or poorly understood.</div> <div class="vocab-ex-text">"…a question that can also shed light on less extreme cases."</div> <span class="vocab-register">C1 — widely used in academic writing and formal speech</span> </div> </div></div><div class="vocab-card"> <div class="vocab-front"> <div class="vocab-word-title">to banish</div> <span class="vocab-pos-badge">verb [T]</span> </div> <div class="vocab-back"> <div class="vocab-back-inner"> <div class="vocab-def-text">To send someone away permanently, especially as a punishment; to exile.</div> <div class="vocab-ex-text">"…since complainers are permanently banished…"</div> <span class="vocab-register">C1 — literary/formal register</span> </div> </div></div></div>
+  </section>
+
+  <section class="page-section" data-title="Grammar">
+  <h2>7. Grammar focus: concession in academic argument</h2>
+  <p class="note">One focused grammar item: use concession structures to acknowledge an opposing idea before developing your own argument. This is especially useful for C1 discussion of moral responsibility.</p>
+
+  <div class="q">
+    <h3>Grammar point</h3>
+    <p><strong>Concession</strong> means admitting that another point may be true, while showing that it does not completely defeat your argument.</p>
+    <p><strong>Useful structures:</strong></p>
+    <ul>
+      <li><strong>Although / Even though + clause, ...</strong><br>Although JoJo’s upbringing shaped his values, this does not automatically remove all responsibility.</li>
+      <li><strong>While it is true that + clause, ...</strong><br>While it is true that JoJo was raised in an abnormal environment, he may still have had some capacity for moral reflection.</li>
+      <li><strong>Despite / In spite of + noun or -ing, ...</strong><br>Despite being raised by a tyrant, JoJo might still be judged for continuing the same cruelty.</li>
+      <li><strong>Admittedly, ... However, ...</strong><br>Admittedly, JoJo’s moral education was deeply distorted. However, this does not prove that he lacked all agency.</li>
+      <li><strong>Even if + clause, ...</strong><br>Even if his values were shaped by his father, society may still need to hold him accountable.</li>
+    </ul>
+  </div>
+
+  <h3>Practice A: choose the best concession structure</h3>
+  <div class="question-list">
+    <div class="q"><label>1. ______ JoJo was raised in isolation, his actions still harmed real people.</label><select data-answer="Although"><option value="">Choose...</option><option>Although</option><option>Because</option><option>So that</option></select></div>
+    <div class="q"><label>2. ______ his distorted upbringing, JoJo may still bear some responsibility.</label><select data-answer="Despite"><option value="">Choose...</option><option>Despite</option><option>Although</option><option>Even though</option></select></div>
+    <div class="q"><label>3. ______ it is true that JoJo inherited his father’s values, we still need to ask whether he could have questioned them.</label><select data-answer="While"><option value="">Choose...</option><option>While</option><option>Because</option><option>Unless</option></select></div>
+    <div class="q"><label>4. ______ JoJo’s sister rejected tyranny, this suggests that moral resistance was possible.</label><select data-answer="Given that"><option value="">Choose...</option><option>Given that</option><option>Despite</option><option>In spite of</option></select></div>
+    <div class="q"><label>5. ______ his environment was abnormal, it does not necessarily follow that he had no moral agency.</label><select data-answer="Even though"><option value="">Choose...</option><option>Even though</option><option>Due to</option><option>So as to</option></select></div>
+    <button onclick="checkSelects(this)">Check section</button><div class="check-result"></div>
+  </div>
+  <div class="answers"><strong>Answers:</strong> 1 Although, 2 Despite, 3 While, 4 Given that, 5 Even though.</div>
+  <button onclick="toggleAnswers(this)">Reveal / hide answers</button>
+
+  <h3>Practice B: complete the argument</h3>
+  <div class="question-list">
+    <div class="q"><label>1. Although JoJo’s moral world was shaped by his father, ...</label><input type="text" placeholder="Complete the sentence with your own argument..."></div>
+    <div class="q"><label>2. While it is true that upbringing influences character, ...</label><input type="text" placeholder="Complete the sentence with your own argument..."></div>
+    <div class="q"><label>3. Despite being exposed only to tyranny, ...</label><input type="text" placeholder="Complete the sentence with your own argument..."></div>
+    <div class="q"><label>4. Admittedly, JoJo’s case makes blame more complicated. However, ...</label><input type="text" placeholder="Complete the sentence with your own argument..."></div>
+    <div class="q"><label>5. Even if determinism weakens the idea of free choice, ...</label><input type="text" placeholder="Complete the sentence with your own argument..."></div>
+  </div>
+  <div class="answers"><strong>Example answers:</strong><br>
+    1. Although JoJo’s moral world was shaped by his father, he may still be accountable for continuing a system of cruelty.<br>
+    2. While it is true that upbringing influences character, it does not completely erase the possibility of moral reflection.<br>
+    3. Despite being exposed only to tyranny, JoJo might have noticed the suffering caused by his rule.<br>
+    4. Admittedly, JoJo’s case makes blame more complicated. However, explanation is not the same as excuse.<br>
+    5. Even if determinism weakens the idea of free choice, society may still need responsibility for practical and ethical reasons.
+  </div>
+  <button onclick="toggleAnswers(this)">Reveal / hide example answers</button>
+
+  <h3>Practice C: rewrite using concession</h3>
+  <div class="question-list">
+    <div class="q"><label>1. JoJo had an abnormal upbringing. He still harmed others.</label><input type="text" placeholder="Rewrite with Although / Even though..."></div>
+    <div class="q"><label>2. His father shaped his values. JoJo may still be morally responsible.</label><input type="text" placeholder="Rewrite with While it is true that..."></div>
+    <div class="q"><label>3. JoJo was influenced by his environment. He cannot be fully excused.</label><input type="text" placeholder="Rewrite with Despite..."></div>
+    <div class="q"><label>4. Determinism is persuasive. It creates problems for punishment.</label><input type="text" placeholder="Rewrite with Admittedly... However..."></div>
+  </div>
+  <div class="answers"><strong>Possible rewrites:</strong><br>
+    1. Although JoJo had an abnormal upbringing, he still harmed others.<br>
+    2. While it is true that his father shaped his values, JoJo may still be morally responsible.<br>
+    3. Despite being influenced by his environment, JoJo cannot be fully excused.<br>
+    4. Admittedly, determinism is persuasive. However, it creates problems for punishment.
+  </div>
+  <button onclick="toggleAnswers(this)">Reveal / hide possible rewrites</button>
+</section>
+
+
+<section class="page-section" data-title="Discussion">
+  <h2>8. Discussion</h2>
+  <p class="note">Use the language table first, then discuss the five questions below. Aim to balance moral judgement with context, causation and responsibility.</p>
+  <table class="useful-table">
+      <thead><tr><th>Function</th><th>C1 useful language</th></tr></thead>
+      <tbody>
+        <tr><td>Balancing blame and context</td><td>While his upbringing may mitigate his responsibility, it does not necessarily absolve him of blame.</td></tr>
+        <tr><td>Introducing a counterargument</td><td>One could object that this explanation risks collapsing responsibility into mere causation.</td></tr>
+        <tr><td>Qualifying a position</td><td>To a certain extent, moral agency depends on whether the person had access to alternative moral frameworks.</td></tr>
+        <tr><td>Discussing determinism</td><td>If our actions are causally determined, the concept of desert becomes far more problematic.</td></tr>
+        <tr><td>Concluding</td><td>Overall, the most defensible position is a nuanced one: accountability should remain, but it should be sensitive to formation and context.</td></tr>
+      </tbody>
+    </table>
+  
+<div class="discussion-question-list">
+  <h3>Five discussion questions</h3>
+  <ol>
+    <li>To what extent do you think a person’s upbringing determines their moral character? Can people ever truly overcome their early conditioning?</li>
+    <li>The video presents the Deep Self View and Susan Wolf’s critique of it. Which position do you find more convincing, and why?</li>
+    <li>How should the legal system account for a criminal’s upbringing when determining their sentence? Should a deprived childhood reduce punishment?</li>
+    <li>What does JoJa’s existence as a counterexample imply about JoJo’s moral responsibility? Is it a strong argument?</li>
+    <li>If no one is truly responsible for who they become, what are the implications for guilt, punishment and forgiveness in society?</li>
+  </ol>
+</div>
+
+  <div id="discuss-list"><div class="discuss-card"> <button class="discuss-trigger" onclick="toggleBlock(this)"> <span class="discuss-type">Personal opinion</span> <span class="discuss-q-text">To what extent do you think a person's upbringing determines their moral character? Can people ever truly overcome their early conditioning?</span> <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5 8 10 13 15 8"></polyline></svg> </button> <div class="discuss-body"> <div class="discuss-body-inner"> <div class="discuss-hint-box">Useful language: <em>to a large/limited extent… it could be argued that… while it is undeniable that… nevertheless… there is a strong case for the view that…</em></div> <div class="discuss-sample"><strong>Model opening:</strong> "To a considerable extent, early upbringing shapes the moral framework through which we interpret the world. That said, it would be reductive to argue that environment is entirely deterministic — numerous individuals have transcended deeply damaging childhoods to develop strong ethical principles. The key distinction, it seems to me, lies between…"</div> </div> </div></div><div class="discuss-card"> <button class="discuss-trigger" onclick="toggleBlock(this)"> <span class="discuss-type">Compare viewpoints</span> <span class="discuss-q-text">The text presents the Deep Self View (Watson &amp; Frankfurt) and Wolf's critique of it. Which position do you find more convincing, and why?</span> <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5 8 10 13 15 8"></polyline></svg> </button> <div class="discuss-body"> <div class="discuss-body-inner"> <div class="discuss-hint-box">Useful language: <em>the former argument is more persuasive insofar as… one could counter that… the crux of the matter is… it stands to reason that… Wolf's position has greater explanatory power because…</em></div> <div class="discuss-sample"><strong>Model opening:</strong> "While the Deep Self View offers an elegant account of how we ordinarily assign praise and blame, it fails to grapple with cases — such as JoJo's — where the self doing the acting was itself constructed through coercion. Wolf's intervention strikes me as more ethically honest: to ask whether someone's values reflect their deep self is insufficient if we cannot also ask how that self came to be."</div> </div> </div></div><div class="discuss-card"> <button class="discuss-trigger" onclick="toggleBlock(this)"> <span class="discuss-type">Applied ethics</span> <span class="discuss-q-text">How should the legal system account for a criminal's upbringing when determining their sentence? Should a deprived childhood reduce a person's punishment?</span> <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5 8 10 13 15 8"></polyline></svg> </button> <div class="discuss-body"> <div class="discuss-body-inner"> <div class="discuss-hint-box">Useful language: <em>mitigating circumstances… culpability… to be held accountable… punitive vs rehabilitative justice… it would be unjust to…</em></div> <div class="discuss-sample"><strong>Model opening:</strong> "Most legal systems already recognise mitigating circumstances, and I would argue this is both philosophically sound and practically necessary. A childhood characterised by abuse, deprivation, or the absence of any moral education clearly affects the conditions under which a person develops — and justice that ignores these conditions risks being merely punitive rather than genuinely fair."</div> </div> </div></div><div class="discuss-card"> <button class="discuss-trigger" onclick="toggleBlock(this)"> <span class="discuss-type">Logical analysis</span> <span class="discuss-q-text">What does JoJa's existence as a counterexample logically imply about JoJo's moral responsibility? Is it a strong argument?</span> <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5 8 10 13 15 8"></polyline></svg> </button> <div class="discuss-body"> <div class="discuss-body-inner"> <div class="discuss-hint-box">Useful language: <em>by extension… this undermines the claim that… it does not necessarily follow that… one could posit that… the implication being… the counterexample has limited force because…</em></div> <div class="discuss-sample"><strong>Model opening:</strong> "JoJa's existence is philosophically significant because it challenges the assumption that JoJo's tyranny was an inevitable outcome of his environment. If someone raised in identical conditions chose differently, it suggests that JoJo retained some capacity for moral choice. However, this argument is not without problems — individual variation in temperament or circumstance might explain the divergence without restoring full moral agency to JoJo."</div> </div> </div></div><div class="discuss-card"> <button class="discuss-trigger" onclick="toggleBlock(this)"> <span class="discuss-type">Abstract extension</span> <span class="discuss-q-text">If no one is truly responsible for who they become, what are the implications for guilt, punishment, and forgiveness in society?</span> <svg class="acc-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5 8 10 13 15 8"></polyline></svg> </button> <div class="discuss-body"> <div class="discuss-body-inner"> <div class="discuss-hint-box">Useful language: <em>the ramifications of… were this to be the case… it would stand to reason that… society would be compelled to… a fundamentally different conception of…</em></div> <div class="discuss-sample"><strong>Model opening:</strong> "Were we to accept a thoroughgoing incompatibilism — that no one is truly responsible for who they become — the implications would be profound. The retributive model of justice, which relies on the concept of deserved punishment, would lose its moral foundation entirely. In its place, we would be forced to adopt a purely consequentialist framework: punishment only justifiable insofar as it deters, rehabilitates, or protects society — not as something a person deserves."</div> </div> </div></div></div>
+  
+</section>
+
+</main>
+
+<footer>ESL CONNECT interactive lesson · Moral Responsibility & Free Will · Yellow-frame template version</footer>
+
+<script>
+let currentPageIndex = 0;
+let selectedDragItem = null;
+let selectedChip = null;
+let dragWord = null;
+
+function allSections(){ return Array.from(document.querySelectorAll('main > section.page-section')); }
+
+function buildShortcuts(){
+  const row = document.getElementById('shortcutRow');
+  row.innerHTML = '';
+  allSections().forEach((section, index) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'shortcut-btn';
+    btn.textContent = section.dataset.title || `Section ${index + 1}`;
+    btn.onclick = () => goToPage(index);
+    row.appendChild(btn);
+  });
+}
+
+function goToPage(index, scrollToTop=true){
+  const sections = allSections();
+  if(!sections.length) return;
+  currentPageIndex = Math.max(0, Math.min(index, sections.length - 1));
+  sections.forEach((section, i) => section.classList.toggle('active', i === currentPageIndex));
+  const counter = document.getElementById('sectionCounter');
+  const fill = document.getElementById('progressFill');
+  if(counter) counter.textContent = `Section ${currentPageIndex + 1} of ${sections.length}`;
+  if(fill) fill.style.width = `${((currentPageIndex + 1) / sections.length) * 100}%`;
+  document.querySelectorAll('.shortcut-btn').forEach((btn, i) => btn.classList.toggle('active', i === currentPageIndex));
+  if(scrollToTop) document.querySelector('main').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function nextPage(){ goToPage(currentPageIndex + 1); }
+function previousPage(){ goToPage(currentPageIndex - 1); }
+
+function toggleAnswers(button){
+  const answers = button.closest('section').querySelector('.answers');
+  if(answers) answers.classList.toggle('show');
+}
+
+function normalize(text){ return (text || '').trim().toLowerCase().replace(/[’']/g, "'"); }
+
+function checkSelects(button){
+  const section = button.closest('section');
+  const selects = section.querySelectorAll('select[data-answer]');
+  let correct = 0;
+  selects.forEach(sel => {
+    const ok = normalize(sel.value) === normalize(sel.dataset.answer);
+    sel.style.borderColor = ok ? '#236147' : '#a6422b';
+    if(ok) correct++;
+  });
+  const result = section.querySelector('.check-result');
+  if(result) {
+    result.textContent = `You got ${correct}/${selects.length} correct.`;
+    result.className = 'check-result ' + (correct === selects.length ? 'correct' : 'wrong');
+  }
+}
+
+function resetWorksheet(){
+  document.querySelectorAll('input, textarea').forEach(el => {
+    el.value = '';
+    el.style.borderColor = 'rgba(19,34,56,.24)';
+    el.classList.remove('ok','no','correct','wrong');
+  });
+  document.querySelectorAll('select').forEach(el => {
+    el.selectedIndex = 0;
+    el.disabled = false;
+    el.style.borderColor = 'rgba(19,34,56,.24)';
+    el.classList.remove('ok','no','correct','wrong');
+  });
+  document.querySelectorAll('.answers').forEach(a => a.classList.remove('show'));
+  document.querySelectorAll('.check-result,.gap-result,.gf-result-msg').forEach(r => {
+    r.textContent = '';
+    r.className = r.className.split(' ')[0] || '';
+  });
+  goToPage(0,false);
+}
+
+function toggleBlock(btn){
+  const parent = btn.closest('.grammar-block, .accordion-item, .discuss-card, .vocab-card');
+  if(parent) parent.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildShortcuts();
+  goToPage(0,false);
+  document.querySelectorAll('.vocab-card').forEach(card => card.addEventListener('click', () => card.classList.toggle('open')));
+});
+</script>
+</body>
+</html>
