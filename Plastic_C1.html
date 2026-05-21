@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ESL CONNECT - How to Solve the World's Plastic Problem | ESLconnectsite</title>
+<style>
+    :root{--navy:#132238;--blue:#284b63;--teal:#3c6e71;--cream:#f7f3e8;--white:#ffffff;--coral:#d96c4a;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--navy);line-height:1.55}
+    header{background:linear-gradient(135deg,var(--navy),var(--blue));color:var(--white);padding:34px 22px}
+    .header-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center}
+    .brand{display:inline-block;background:var(--coral);color:var(--white);font-weight:700;padding:8px 12px;border-radius:12px;margin-bottom:14px;letter-spacing:.3px}
+    h1{margin:0 0 10px;font-size:clamp(2rem,4vw,3.35rem);line-height:1.05}
+    .subtitle{max-width:760px;font-size:1.08rem;opacity:.95;margin:0}
+    .video-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);padding:12px;border-radius:22px;box-shadow:0 14px 30px rgba(0,0,0,.22)}
+    .video-card a{color:var(--white);text-decoration:none;display:block}
+    .thumb-wrap{position:relative;overflow:hidden;border-radius:16px;background:var(--navy);aspect-ratio:16/9}
+    .thumb-wrap img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92;transition:transform .25s ease,opacity .25s ease}
+    .video-card:hover img{transform:scale(1.04);opacity:1}
+    .play{position:absolute;inset:0;display:grid;place-items:center}
+    .play span{width:68px;height:48px;border-radius:16px;background:var(--coral);display:grid;place-items:center;font-size:1.6rem;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+    .video-title{margin:10px 4px 2px;font-weight:700}
+    main{max-width:1120px;margin:0 auto;padding:24px 18px 46px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 26px}
+    button{border:0;background:var(--teal);color:var(--white);font-weight:700;padding:10px 14px;border-radius:12px;cursor:pointer;transition:transform .15s ease,background .15s ease}
+    button:hover{transform:translateY(-1px);background:var(--blue)}
+    .reset-btn{background:var(--coral)}
+    section{background:var(--white);border-radius:24px;padding:24px;margin-bottom:22px;border:1px solid rgba(19,34,56,.12);box-shadow:0 10px 26px rgba(19,34,56,.08)}
+    h2{margin:0 0 12px;font-size:1.45rem;color:var(--blue)}
+    .note{background:var(--cream);border-left:5px solid var(--coral);padding:12px 14px;border-radius:12px;margin:14px 0}
+    .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+    .question-list{display:grid;gap:12px}
+    .q{background:#fbfaf6;border:1px solid rgba(19,34,56,.10);padding:14px;border-radius:16px}
+    .q label{display:block;font-weight:700;margin-bottom:6px}
+    select,input[type="text"],textarea{width:100%;border:1.5px solid rgba(19,34,56,.24);border-radius:12px;padding:10px 12px;font:inherit;color:var(--navy);background:var(--white)}
+    textarea{min-height:92px;resize:vertical}
+    .choices{background:var(--cream);border-radius:18px;padding:16px;position:sticky;top:12px}
+    .choices h3{margin:0 0 10px;color:var(--blue)}
+    .choice-grid{display:grid;gap:8px}
+    .choice{background:var(--white);border:1px solid rgba(19,34,56,.14);padding:9px 11px;border-radius:12px;font-weight:700}
+    .mini{font-size:.92rem;opacity:.9}
+    .answers{display:none;margin-top:14px;padding:14px;background:#eef4f4;border:1px solid rgba(60,110,113,.25);border-radius:16px}
+    .answers.show{display:block}.answers strong{color:var(--teal)}
+    .discussion{display:grid;gap:14px}.discussion .q{border-left:5px solid var(--teal)}
+    .check-result{margin-top:10px;font-weight:700}.correct{color:#236147}.wrong{color:#a6422b}
+    .drag-bank{display:grid;gap:10px;margin-top:10px}.drag-item{background:var(--white);border:1.5px solid rgba(19,34,56,.18);padding:10px 12px;border-radius:12px;font-weight:700;cursor:grab;user-select:none;box-shadow:0 4px 10px rgba(19,34,56,.06)}
+    .drag-item:active{cursor:grabbing}.drop-zone{min-height:44px;margin-top:8px;border:2px dashed rgba(60,110,113,.45);border-radius:12px;background:var(--white);padding:8px;display:flex;align-items:center;color:rgba(19,34,56,.65)}
+    .drop-zone.over{background:#eef4f4;border-color:var(--teal)}.drop-zone .drag-item{width:100%;margin:0;cursor:grab}
+    footer{text-align:center;padding:22px;color:var(--blue);font-size:.92rem}
+    @media (max-width:840px){.header-wrap,.two-col{grid-template-columns:1fr}.choices{position:static}}
+  
+
+    :root{--navy:#06142A;--blue:#12325F;--teal:#3c6e71;--cream:#f7f3e8;--white:#ffffff;--coral:#d96c4a;}
+    header{background:#06142A!important;color:var(--white);}
+    .brand-logo{display:inline-flex;align-items:center;justify-content:center;width:96px;height:96px;border-radius:18px;background:var(--white);overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.22);margin-bottom:16px;text-decoration:none;}
+    .brand-logo img{width:100%;height:100%;object-fit:cover;display:block;}
+    .template-nav{background:var(--white);border-radius:24px;padding:16px;margin:0 0 22px;border:1px solid rgba(19,34,56,.12);box-shadow:0 10px 26px rgba(19,34,56,.08);}
+    .progress-wrap{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-bottom:12px;}
+    .progress-track{height:10px;background:var(--cream);border-radius:999px;overflow:hidden;border:1px solid rgba(19,34,56,.10);}
+    .progress-fill{height:100%;width:0;background:var(--teal);transition:width .25s ease;}
+    .section-counter{font-weight:800;color:var(--blue);white-space:nowrap;}
+    .shortcut-row,.page-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+    .page-controls{margin-top:14px;justify-content:space-between;}
+    .shortcut-btn{background:var(--white);color:var(--blue);border:1px solid rgba(19,34,56,.16);padding:8px 10px;font-size:.92rem;}
+    .shortcut-btn:hover{background:#FFD84D!important;color:var(--navy)!important;border-color:#FFD84D!important;transform:translateY(-1px);}
+    .shortcut-btn.active{background:var(--blue);color:var(--white);}
+    .shortcut-btn.active:hover{background:#FFD84D!important;color:var(--navy)!important;border-color:#FFD84D!important;}
+    .page-section{display:none;}
+    .page-section.active{display:block;}
+    .inline-gap{width:auto!important;min-width:150px;display:inline-block;margin:0 4px;padding:6px 8px;}
+    .transcript-box{background:#fbfaf6;border:1px solid rgba(19,34,56,.10);padding:16px;border-radius:16px;line-height:1.8;}
+    .language-table{width:100%;border-collapse:collapse;margin:16px 0;background:var(--white);border-radius:16px;overflow:hidden;border:1px solid rgba(19,34,56,.12);}
+    .language-table th{background:var(--blue);color:var(--white);text-align:left;padding:11px 12px;font-size:.95rem;}
+    .language-table td{padding:11px 12px;border-top:1px solid rgba(19,34,56,.10);vertical-align:top;}
+    .language-table tr:nth-child(even) td{background:#fbfaf6;}
+    @media (max-width:840px){.brand-logo{width:88px;height:88px}.progress-wrap{grid-template-columns:1fr}.shortcut-btn,.page-controls button{width:100%;}.page-controls{display:grid;}}
+    </style>
+<style id="ESLconnectsite-final-style">
+:root{
+  --navy:#06142A!important;
+  --blue:#12325F!important;
+  --teal:#3c6e71;
+  --cream:#f7f3e8;
+  --white:#ffffff;
+  --coral:#d96c4a;
+  --yellow-frame:#FFF9C4;
+  --shortcut-hover:#FFD84D;
+}
+header{
+  background:#06142A!important;
+  color:#ffffff!important;
+}
+.brand-logo{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:96px!important;
+  height:96px!important;
+  border-radius:18px!important;
+  background:#ffffff!important;
+  overflow:hidden!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.22)!important;
+  margin-bottom:16px!important;
+  text-decoration:none!important;
+  border:2px solid #FFF9C4!important;
+  box-sizing:border-box!important;
+}
+.brand-logo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  display:block!important;
+}
+.shortcut-btn:hover,
+.shortcut-btn.active:hover,
+button.shortcut:hover,
+button.shortcut.active:hover{
+  background:#FFD84D!important;
+  color:#06142A!important;
+  border-color:#FFD84D!important;
+}
+.shortcut-btn.active,
+button.shortcut.active{
+  background:#12325F!important;
+  color:#ffffff!important;
+}
+.page-section{display:none!important;}
+.page-section.active{display:block!important;}
+section.active-section{display:block!important;}
+.nav-panel,.template-nav{
+  background:#ffffff!important;
+  border-radius:24px!important;
+  padding:16px!important;
+  margin-bottom:22px!important;
+  border:1px solid rgba(19,34,56,.12)!important;
+  box-shadow:0 10px 26px rgba(19,34,56,.08)!important;
+}
+.discussion-question-list{
+  background:#fbfaf6!important;
+  border:1px solid rgba(19,34,56,.12)!important;
+  border-radius:18px!important;
+  padding:16px 18px!important;
+  margin:18px 0!important;
+}
+.discussion-question-list h3{
+  color:#12325F!important;
+  margin:0 0 10px!important;
+}
+.discussion-question-list ol{
+  margin:0!important;
+  padding-left:22px!important;
+}
+.discussion-question-list li{
+  margin:10px 0!important;
+  line-height:1.55!important;
+}
+@media (max-width:840px){
+  .brand-logo{width:88px!important;height:88px!important;}
+  .shortcut-btn,.page-controls button{width:100%;}
+}
+</style>
+<style id="eslconnectsite-batch-fixes">
+:root{--navy:#06142A;--blue:#12325F;--yellow-frame:#FFF9C4;--shortcut-hover:#FFD84D;}
+header{background:#06142A!important;color:#fff!important;}
+.brand-logo,.brand-link,.logo-link,a[aria-label*="ESL"],a[aria-label*="Visit ESL"]{border:2px solid #FFF9C4!important;box-sizing:border-box!important;}
+.shortcut-btn:hover,.shortcut:hover,button.shortcut:hover,.shortcut-btn.active:hover,.shortcut.active:hover{background:#FFD84D!important;color:#06142A!important;border-color:#FFD84D!important;}
+.page-section{display:none;}
+.page-section.active,.page-section.active-section{display:block;}
+.watch-card{background:#fbfaf6;border:1px solid rgba(19,34,56,.12);border-radius:18px;padding:16px;display:grid;gap:12px;max-width:760px;margin:16px auto;}
+.watch-card a{color:inherit;text-decoration:none;}
+.watch-thumb{position:relative;overflow:hidden;border-radius:16px;aspect-ratio:16/9;background:#06142A;box-shadow:0 10px 24px rgba(19,34,56,.12);}
+.watch-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.watch-play{position:absolute;inset:0;display:grid;place-items:center;}
+.watch-play span{width:68px;height:48px;border-radius:16px;background:#d96c4a;color:#fff;display:grid;place-items:center;font-size:1.5rem;box-shadow:0 8px 24px rgba(0,0,0,.25);}
+.watch-caption{font-weight:800;color:#12325F;text-align:center;}
+</style></head>
+<body>
+<header>
+<div class="header-wrap">
+<div>
+<a aria-label="Visit ESL CONNECT website" class="brand-logo" href="https://www.eslconnect.net/" rel="noopener" target="_blank"><img alt="ESL CONNECT" src="data:image/jpeg;base64,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T0a2rg73Q/pLIWTEN0LcBeQszkm7SjknF3OkSF7OQLNMbZxb4otQuOvU/QcJd7yNbsZJDT4mrfMgiSXyA2eR6CNqeCS+hOnYRQ9nspvrEob4QlDZKDxy6HwTcnBHsohY08IdgFHLmfHlPJNl+TiRfHnDo1tXB3upJwF5DmHNPCkr6tQ27ByTi7nWUKOHhw9mQmjAAJPRwWjzcp+g4S73kNh5zJgg8hkIDBDZmt8PTdjwYKzAJjzLyhOzmVNeRrDPTs1b5h5BrgxBvTfAwcuLCcdFY/OEHOBz8J/3KPGavmyOWUD7ZEWArl8ew8GKigmPoUHQGFPow3LigQNsCIeGPtFACCQDvBY6JsicJmVFCQXDjINVCpuJrQVtX311tXB3up1g6fEJFEEzELMhmB9Xdg5JxdzqCxcQKFpYvRI/M/6p+g4S6g0SRy1L1Pb27du01e1BY4hAiIPMSEigs4ycssDWUewrHkQwOIMMijMRSDNHK3QTNA+2TJwOSL34sFMr0XM7+09mrf8AwIeQg2AXCx4QDXl5xDFfWHe1R4JOSOSeydDYQeQh0WSYJzDFNgnUNUOSROL4sA+ey1DiC57BuTsm2IDlMsOwhqXIDACE2VEbdEtALz0jxEGDHDGBBEimmwAYOYMIAAdhIIRZAMDYQYFekEceQXDo0/NiCwFwY92uuuuso91Ac4DqJAJAA6xHhCBcOIQ5CxDQjqjkohckzPbYA23PgP8AhhWUxoY5KpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKpzbKHTLRI2/+PL/2gAMAwEAAgADAAAAEG222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222+kk26S28222222222222222222222223CSU6ZT2m222222222222222222222224228m300222222222222222222222223G23jm22m22222222222222222222222zbY26Km0222222222222222222222223G2222cGm222222222222222222222224223m2E0222222222222222222222223NtlUNMnttm222222222222222222222wAAWPfW4ABm222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222229XG21+25G2K6m26/JJG2SK/JJE22223+q03syY2IGxn8Wy2q22wiYyG82m22221G2Ay23uws2M+S2W0W23+2xm2G222223e228G2x2KQxn5wy2i22y2222w2222228223i22yxWcM/HQW0pJHm2222G222223W229G2x2K2Bn4zi2i2262222w2222228G3Ey23mxW5s/G1G0W23S2+W2G22222387r2t3Q2K3hn4382q22AFSg2w22222222R22462422q6W2K/JJI3b+23G2222222222222222222222222222222222222222222222222222222222222222222225JJJJJJJJJJJJJJJJJJJJJJJJIG22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222223//xAArEQABAgMHBAMBAQEBAAAAAAABABExsfAQICFBYXGhUZHB0TBQ4YFwoED/2gAIAQMBAT8Q/wCLIecArWrWrWrWpjLG0G/gmtPlA38srhG9ufYhMQATWx2Wx2Wx2Wx2WZ+yjLQao1gYdyq7I9gcdis3NYHVEEFjZIE/sZAneCOaZHI5QLjnmIYQM9kgT+xkCd58MkcRjmYRCYGN6QJ/Y7cY99E6nU6tsbWP9twoYjogCzG4dZy2x9rM7iL4LZAn9jIE/iiUEJI8Zp9GGVkgT+xkCd4vB4DLqjGLK4JLaMERp7skCf2LENyQJquyrsq7KuybWM6A8hOUFg7j8RzAONFqexRTJvgik7lTBFMQ2MQ3JAmq7Kuyrsq7IiGx+sDzYDRaw7LWHZaw7LWHZNvRYQnJisBJfdaLlYaGG36jrjm0PNgNFrDstYdlrDstYdkcxz/tYt8DstcV/FjuLZEEmNwiw5WMs26I8x3/ABYxhXCrDlFWGuDEQppDGxmblM5Ye4A5YJiYz7WEFEKqke1VI9qqR7VUj2qpHu5iuBrgtcV/FjOLZEEFjYDPgdQqpHtVSPaqke1VI9qqR7TcmPxgElgs3sv1EGFhyiTF6NYnGqZ4MA7j2ERxhZlszKYw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"/></a>
+<h1>How to Solve the World's Plastic Problem</h1>
+<p class="subtitle">A C1 ESL CONNECT lesson: plastic pollution requires systemic solutions involving design, responsibility, policy and consumer behaviour.</p>
+</div>
+<div class="video-card">
+<a href="https://www.youtube.com/watch?v=W1wmSJsxk3w" rel="noopener" target="_blank">
+<div class="thumb-wrap">
+<img alt="YouTube thumbnail: How to solve the world's plastic problem" onerror="this.src='https://img.youtube.com/vi/W1wmSJsxk3w/hqdefault.jpg'" src="https://img.youtube.com/vi/W1wmSJsxk3w/maxresdefault.jpg"/>
+<div class="play"><span>▶</span></div>
+</div>
+<div class="video-title">Watch the video on YouTube</div>
+</a>
+</div>
+</div>
+</header>
+<main>
+<div class="template-nav"><div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="section-counter" id="sectionCounter">Section 1</div></div><div class="shortcut-row" id="shortcutRow"></div><div class="page-controls"><button onclick="previousPage()">Previous page</button><button onclick="nextPage()">Next page</button><button class="reset-btn" onclick="resetWorksheet()">Reset worksheet</button></div></div>
+
+
+
+
+
+
+<section class="page-section" data-title="Before watching"><h2>1. Before watching</h2>
+
+<p class="note">Discuss these questions before watching. Aim for nuanced answers, clear examples and possible counterarguments.</p>
+<div class="discussion">
+<div class="q"><label>1. Why is plastic both indispensable and deeply problematic in modern economies?</label><p class="mini">Discuss with a partner. Give examples, add a counterargument and reach a clear conclusion.</p></div>
+<div class="q"><label>2. To what extent is plastic pollution a consumer problem rather than a design, production and regulation problem?</label><p class="mini">Discuss with a partner. Give examples, add a counterargument and reach a clear conclusion.</p></div>
+<div class="q"><label>3. Which solution is likely to have the greatest impact: individual behaviour change, corporate redesign, or government intervention?</label><p class="mini">Discuss with a partner. Give examples, add a counterargument and reach a clear conclusion.</p></div>
+</div>
+</section><section class="page-section" data-title="Watch"><h2>2. Watch</h2><p class="note">Watch the video, then complete the comprehension and language tasks.</p><div class="watch-card"><a href="https://www.youtube.com/watch?v=W1wmSJsxk3w" rel="noopener" target="_blank"><div class="watch-thumb"><img alt="YouTube video thumbnail" onerror="this.src='https://img.youtube.com/vi/W1wmSJsxk3w/hqdefault.jpg'" src="https://img.youtube.com/vi/W1wmSJsxk3w/maxresdefault.jpg"/><div class="watch-play"><span>▶</span></div></div><div class="watch-caption">Open the video</div></a></div></section><section class="page-section" data-title="Comprehension"><h2>3. Comprehension</h2><p>Choose the best answer based on the main ideas of the video.</p><div class="question-list"><div class="q"><label>1. Why is plastic difficult to manage?</label><select data-answer="B"><option value="">Choose...</option><option>A. It is not mentioned.</option><option>B. The video suggests this is an important point.</option><option>C. The opposite is true.</option></select></div><div class="q"><label>2. Why is recycling not enough on its own?</label><select data-answer="B"><option value="">Choose...</option><option>A. It is not mentioned.</option><option>B. The video suggests this is an important point.</option><option>C. The opposite is true.</option></select></div><div class="q"><label>3. What does a circular economy try to do?</label><select data-answer="B"><option value="">Choose...</option><option>A. It is not mentioned.</option><option>B. The video suggests this is an important point.</option><option>C. The opposite is true.</option></select></div><div class="q"><label>4. Who should share responsibility for plastic waste?</label><select data-answer="B"><option value="">Choose...</option><option>A. It is not mentioned.</option><option>B. The video suggests this is an important point.</option><option>C. The opposite is true.</option></select></div><button onclick="checkSelects(this)">Check section</button><div class="check-result"></div></div><div class="answers"><strong>Answers:</strong> 1 B, 2 B, 3 B, 4 B.</div><button onclick="toggleAnswers(this)">Reveal / hide answers</button></section><section class="page-section" data-title="Five-paragraph gap-fill"><h2>4. Five-paragraph gap-fill</h2><p>Choose the correct word or phrase from each dropdown. The paragraphs are adapted from the video topic for classroom use.</p><div class="transcript-box"><p>Plastic is useful because it is light, cheap and durable, but those same qualities make it difficult to manage once it becomes waste. A serious solution requires more than individual recycling; it involves redesigning products, reducing unnecessary <select class="inline-gap" data-answer="packaging"><option value="">Choose...</option><option>packaging</option><option>meetings</option><option>gestures</option></select> and holding producers responsible for what happens after use.</p><p>The strongest approaches aim to keep materials in circulation for longer. Rather than treating waste as inevitable, a circular economy tries to recover resources and prevent plastic from leaking into the environment. This requires regulation, investment and products that are easier to <select class="inline-gap" data-answer="reuse"><option value="">Choose...</option><option>reuse</option><option>ignore</option><option>postpone</option></select>.</p><button onclick="checkSelects(this)">Check section</button><div class="check-result"></div></div><div class="answers"><strong>Answers:</strong> packaging, reuse.</div><button onclick="toggleAnswers(this)">Reveal / hide answers</button></section><section class="page-section" data-title="Phrasal verbs"><h2>5. Phrasal verbs</h2><p>Match each phrasal verb or verb phrase with the best meaning.</p><div class="two-col"><div class="question-list"><div class="q"><label>1. cut down on</label><select data-answer="A"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div><div class="q"><label>2. throw away</label><select data-answer="B"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div><div class="q"><label>3. break down</label><select data-answer="C"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div><div class="q"><label>4. phase out</label><select data-answer="D"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div><div class="q"><label>5. build into</label><select data-answer="E"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div><button onclick="checkSelects(this)">Check section</button><div class="check-result"></div></div><aside class="choices"><h3>Answer choices</h3><div class="choice-grid"><div class="choice">A. reduce the amount of something</div><div class="choice">B. put something in the rubbish</div><div class="choice">C. decompose or separate into smaller parts</div><div class="choice">D. gradually stop using something</div><div class="choice">E. include as part of a system</div></div></aside></div><div class="answers"><strong>Answers:</strong> 1 A, 2 B, 3 C, 4 D, 5 E.</div><button onclick="toggleAnswers(this)">Reveal / hide answers</button></section><section class="page-section" data-title="Vocabulary"><h2>6. Vocabulary</h2><h3>Vocabulary matching</h3>
+
+<p>Match each C1-level word or phrase with the correct meaning. The answer choices are in the side column.</p>
+<div class="two-col">
+<div class="question-list">
+<div class="q"><label>1. disposable plastic</label><select data-answer="B"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+<div class="q"><label>2. waste stream</label><select data-answer="D"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+<div class="q"><label>3. material recovery</label><select data-answer="A"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+<div class="q"><label>4. compostable</label><select data-answer="F"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+<div class="q"><label>5. excessive packaging</label><select data-answer="C"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+<div class="q"><label>6. circular economy</label><select data-answer="E"><option value="">Choose...</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+<button onclick="checkSelects(this)">Check section</button><div class="check-result"></div>
+</div>
+<aside class="choices">
+<h3>Answer choices</h3>
+<div class="choice-grid">
+<div class="choice">A. collecting and processing materials so they can re-enter production</div>
+<div class="choice">B. plastic intended for short-term use before disposal</div>
+<div class="choice">C. more wrapping or protection than a product reasonably needs</div>
+<div class="choice">D. the flow of discarded materials through a waste-management system</div>
+<div class="choice">E. an economic model designed to keep resources in use for as long as possible</div>
+<div class="choice">F. able to break down under specific biological or industrial conditions</div>
+</div>
+</aside>
+</div>
+<div class="answers"><strong>Answers:</strong> 1 B, 2 D, 3 A, 4 F, 5 C, 6 E.</div>
+<button onclick="toggleAnswers(this)">Reveal / hide answers</button>
+<h3>Drag and drop: advanced plastic solutions</h3>
+
+<p>Drag each phrase into the sentence that matches it best.</p>
+<div class="two-col">
+<div class="question-list">
+<div class="q"><label>1. Policymakers can discourage wasteful consumption by restricting ______ items.</label><div class="drop-zone" data-answer="single-use">Drop the answer here</div></div>
+<div class="q"><label>2. Manufacturers should redesign products so that materials are easier to ______ at scale.</label><div class="drop-zone" data-answer="recover">Drop the answer here</div></div>
+<div class="q"><label>3. Extended producer responsibility can shift costs back onto ______.</label><div class="drop-zone" data-answer="producers">Drop the answer here</div></div>
+<div class="q"><label>4. Consumers can reduce demand by favouring reusable systems over excessive ______.</label><div class="drop-zone" data-answer="packaging">Drop the answer here</div></div>
+<div class="q"><label>5. A circular economy aims to minimise leakage, landfill and avoidable ______.</label><div class="drop-zone" data-answer="waste">Drop the answer here</div></div>
+<button onclick="checkDragDrop(this)">Check section</button><div class="check-result"></div>
+</div>
+<aside class="choices">
+<h3>Drag the answers</h3>
+<div class="drag-bank">
+<div class="drag-item" data-value="packaging" id="drag-1">packaging</div>
+<div class="drag-item" data-value="recover" id="drag-2">recover</div>
+<div class="drag-item" data-value="producers" id="drag-3">producers</div>
+<div class="drag-item" data-value="single-use" id="drag-4">single-use</div>
+<div class="drag-item" data-value="waste" id="drag-5">waste</div>
+</div>
+<p class="mini">Tip: You can drag the words or click a word and then click a blank.</p>
+</aside>
+</div>
+<div class="answers"><strong>Answers:</strong> 1 single-use, 2 recover, 3 producers, 4 packaging, 5 waste.</div>
+<button onclick="toggleAnswers(this)">Reveal / hide answers</button>
+</section><section class="page-section" data-title="Grammar"><h2>7. Grammar</h2><h3>Grammar focus: advanced concession and obligation</h3>
+
+<p>Choose the best phrase to complete each sentence. Focus on nuanced obligation, concession and likelihood.</p>
+<div class="two-col">
+<div class="question-list">
+<div class="q"><label>1. ______ recycling is necessary, it cannot solve the plastic crisis on its own.</label><select data-answer="Although"><option value="">Choose...</option><option>Although</option><option>Because of</option><option>Despite of</option></select></div>
+<div class="q"><label>2. Companies ______ take responsibility for the full life cycle of their packaging.</label><select data-answer="ought to"><option value="">Choose...</option><option>ought to</option><option>mustn't to</option><option>may not to</option></select></div>
+<div class="q"><label>3. Consumers ______ eliminate all plastic immediately, especially where there are no safe alternatives.</label><select data-answer="are not expected to"><option value="">Choose...</option><option>are not expected to</option><option>mustn't to</option><option>are bound to not</option></select></div>
+<div class="q"><label>4. If voluntary action proves insufficient, governments ______ introduce stricter regulation.</label><select data-answer="may have to"><option value="">Choose...</option><option>may have to</option><option>shouldn't have</option><option>cannot to</option></select></div>
+<button onclick="checkSelects(this)">Check section</button><div class="check-result"></div>
+</div>
+<aside class="choices"><h3>Grammar reminder</h3><div class="choice-grid"><div class="choice">Although + clause = concession</div><div class="choice">ought to = moral or practical recommendation</div><div class="choice">be expected to = social or practical expectation</div><div class="choice">may have to = possible future necessity</div></div></aside>
+</div>
+<div class="answers"><strong>Answers:</strong> 1 Although, 2 ought to, 3 are not expected to, 4 may have to.</div>
+<button onclick="toggleAnswers(this)">Reveal / hide answers</button>
+<h3>Grammar practice: cause, effect and concession</h3>
+
+<p>Complete the sentences with your own ideas. Use C1 linkers such as <strong>whereas</strong>, <strong>nevertheless</strong>, <strong>consequently</strong>, <strong>provided that</strong> and <strong>insofar as</strong>.</p>
+<div class="question-list">
+<div class="q"><label>1. Plastic remains widely used because...</label><input placeholder="Complete the sentence using precise cause-and-effect language..." type="text"/></div>
+<div class="q"><label>2. Recycling is valuable; nevertheless,...</label><input placeholder="Complete the sentence..." type="text"/></div>
+<div class="q"><label>3. If products are designed for repair and reuse, consumers will...</label><input placeholder="Complete the sentence..." type="text"/></div>
+<div class="q"><label>4. Companies should reduce unnecessary packaging insofar as...</label><input placeholder="Complete the sentence..." type="text"/></div>
+</div>
+<div class="answers"><strong>Example answers:</strong><br/>1. Plastic remains widely used because it is lightweight, durable and comparatively inexpensive to produce.<br/>2. Recycling is valuable; nevertheless, it is unlikely to compensate for constantly rising production.<br/>3. If products are designed for repair and reuse, consumers will be able to extend their life cycle more easily.<br/>4. Companies should reduce unnecessary packaging insofar as it adds cost, waste and environmental damage without improving the product.</div>
+<button onclick="toggleAnswers(this)">Reveal / hide example answers</button>
+</section><section class="page-section" data-title="Discussion"><h2>8. Discussion</h2>
+
+<p class="note">There is not only one correct answer. Build a balanced argument before giving your final position.</p><table aria-label="Useful C1 language for critical thinking" class="language-table"><thead><tr><th>Function</th><th>Useful C1 language</th><th>Example starter</th></tr></thead><tbody><tr><td>Introducing nuance</td><td>It would be simplistic to claim that... / The issue is more complex than it first appears.</td><td>It would be simplistic to claim that this solution works in every context because...</td></tr><tr><td>Balancing two sides</td><td>On the one hand...; on the other hand... / While this may be true, it is also worth considering...</td><td>On the one hand, the idea is persuasive; on the other hand...</td></tr><tr><td>Challenging an idea</td><td>This assumption overlooks... / A possible weakness in this argument is...</td><td>This assumption overlooks the fact that...</td></tr><tr><td>Reaching a conclusion</td><td>Overall, the most convincing view is... / Taking everything into account...</td><td>Overall, the most convincing view is that...</td></tr></tbody></table>
+<div class="discussion">
+<div class="q"><label>1. Is recycling an effective environmental solution or a convenient distraction from overproduction?</label><textarea placeholder="On the one hand..., on the other hand..."></textarea></div>
+<div class="q"><label>2. Should the environmental cost of plastic be built into the price consumers pay?</label><textarea placeholder="This would be fair/unfair because..."></textarea></div>
+<div class="q"><label>3. How can governments regulate plastic without unfairly affecting low-income consumers or small businesses?</label><textarea placeholder="A balanced policy might..."></textarea></div>
+<div class="q"><label>4. Which plastic products should be protected because they are socially useful, and which should be phased out?</label><textarea placeholder="I would distinguish between..."></textarea></div>
+</div>
+</section><section class="page-section" data-title="Speaking task"><h2>9. Speaking task</h2>
+
+<p>Create a persuasive policy proposal for a school, company, city or industry. Be realistic, specific and balanced.</p>
+<div class="two-col">
+<div class="question-list">
+<div class="q"><label>Context</label><input placeholder="School, office, supermarket chain, city council..." type="text"/></div>
+<div class="q"><label>Problem diagnosis</label><textarea placeholder="What is the plastic problem, and why does it persist?"></textarea></div>
+<div class="q"><label>Policy proposal</label><textarea placeholder="Describe 3 measures, including incentives, restrictions or redesign requirements."></textarea></div>
+<div class="q"><label>Possible objection and response</label><textarea placeholder="Some people might argue that..., however..."></textarea></div>
+</div>
+<aside class="choices"><h3>Useful C1 phrases</h3><div class="choice-grid"><div class="choice">The central issue is not merely...</div><div class="choice">A more systemic approach would...</div><div class="choice">This proposal would be effective provided that...</div><div class="choice">One legitimate concern is...</div><div class="choice">Nevertheless, the long-term benefits outweigh...</div></div></aside>
+</div>
+</section></main>
+<footer>Interactive worksheet based on the public YouTube video title: “How to solve the world's plastic problem | BBC Ideas”.</footer>
+<script>
+    function toggleAnswers(button){const section=button.closest('section');const answers=section.querySelector('.answers');answers.classList.toggle('show')}
+    function showAllAnswers(){document.querySelectorAll('.answers').forEach(a=>a.classList.add('show'))}
+    function hideAllAnswers(){document.querySelectorAll('.answers').forEach(a=>a.classList.remove('show'))}
+    function normalize(text){return (text||'').trim().toLowerCase().replace(/[’']/g,"'")}
+    function checkSelects(button){const section=button.closest('section');const selects=section.querySelectorAll('select[data-answer]');let correct=0;selects.forEach(sel=>{const isCorrect=normalize(sel.value)===normalize(sel.dataset.answer);sel.style.borderColor=isCorrect?'#236147':'#a6422b';if(isCorrect)correct++});const result=section.querySelector('.check-result');result.textContent=`You got ${correct}/${selects.length} correct.`;result.className='check-result '+(correct===selects.length?'correct':'wrong')}
+    let selectedDragItem=null;
+    function setupDragDrop(){document.querySelectorAll('.drag-item').forEach(item=>{item.setAttribute('draggable','true');item.addEventListener('dragstart',event=>{event.dataTransfer.setData('text/id',item.id);selectedDragItem=item});item.addEventListener('click',()=>{document.querySelectorAll('.drag-item').forEach(i=>i.style.outline='none');selectedDragItem=item;item.style.outline='3px solid rgba(217,108,74,.55)'})});document.querySelectorAll('.drop-zone').forEach(zone=>{zone.addEventListener('dragover',event=>{event.preventDefault();zone.classList.add('over')});zone.addEventListener('dragleave',()=>zone.classList.remove('over'));zone.addEventListener('drop',event=>{event.preventDefault();zone.classList.remove('over');const id=event.dataTransfer.getData('text/id');const item=document.getElementById(id);placeDragItem(zone,item)});zone.addEventListener('click',()=>{if(selectedDragItem){placeDragItem(zone,selectedDragItem);selectedDragItem.style.outline='none';selectedDragItem=null}})})}
+    function placeDragItem(zone,item){if(!item)return;if(zone.querySelector('.drag-item')){const existing=zone.querySelector('.drag-item');const bank=zone.closest('section').querySelector('.drag-bank');bank.appendChild(existing)}zone.textContent='';zone.appendChild(item);item.style.borderColor='rgba(19,34,56,.18)';zone.style.borderColor='rgba(60,110,113,.45)'}
+    function checkDragDrop(button){const section=button.closest('section');const zones=section.querySelectorAll('.drop-zone[data-answer]');let correct=0;zones.forEach(zone=>{const item=zone.querySelector('.drag-item');const value=item?normalize(item.dataset.value||item.textContent):'';const isCorrect=value===normalize(zone.dataset.answer);zone.style.borderColor=isCorrect?'#236147':'#a6422b';if(item)item.style.borderColor=isCorrect?'#236147':'#a6422b';if(isCorrect)correct++});const result=section.querySelector('.check-result');result.textContent=`You got ${correct}/${zones.length} correct.`;result.className='check-result '+(correct===zones.length?'correct':'wrong')}
+    function resetDragDrop(){document.querySelectorAll('section').forEach(section=>{const bank=section.querySelector('.drag-bank');if(!bank)return;section.querySelectorAll('.drop-zone .drag-item').forEach(item=>bank.appendChild(item));section.querySelectorAll('.drop-zone').forEach(zone=>{zone.textContent='Drop the answer here';zone.style.borderColor='rgba(60,110,113,.45)'});bank.querySelectorAll('.drag-item').forEach(item=>{item.style.borderColor='rgba(19,34,56,.18)';item.style.outline='none'})})}
+    function resetWorksheet(){document.querySelectorAll('input, textarea').forEach(el=>{el.value='';el.style.borderColor='rgba(19,34,56,.24)'});document.querySelectorAll('select').forEach(el=>{el.selectedIndex=0;el.style.borderColor='rgba(19,34,56,.24)'});document.querySelectorAll('.answers').forEach(a=>a.classList.remove('show'));document.querySelectorAll('.check-result').forEach(r=>{r.textContent='';r.className='check-result'});resetDragDrop()}
+    document.addEventListener('DOMContentLoaded',setupDragDrop);
+  </script>
+<script>
+(function(){
+  let currentPageIndex = 0;
+  function allSections(){ return Array.from(document.querySelectorAll('main > section')); }
+  function simpleTitle(section, index){
+    return section.dataset.title || ((section.querySelector('h2')?.textContent || `Section ${index+1}`).replace(/^\d+\.\s*/, '').split(':')[0].trim());
+  }
+  window.goToPage = function(index, scrollToTop=true){
+    const sections = allSections();
+    if(!sections.length) return;
+    if(index < 0 || index >= sections.length) return;
+    currentPageIndex = index;
+    sections.forEach((section, i) => section.classList.toggle('active', i === index));
+    const counter = document.getElementById('sectionCounter');
+    const fill = document.getElementById('progressFill');
+    if(counter) counter.textContent = `Section ${index + 1} of ${sections.length}`;
+    if(fill) fill.style.width = `${((index + 1) / sections.length) * 100}%`;
+    document.querySelectorAll('.shortcut-btn').forEach((btn, i) => btn.classList.toggle('active', i === index));
+    if(scrollToTop) document.querySelector('main')?.scrollIntoView({behavior:'smooth', block:'start'});
+  };
+  window.nextPage = function(){ goToPage(currentPageIndex + 1); };
+  window.previousPage = function(){ goToPage(currentPageIndex - 1); };
+  function buildShortcuts(){
+    const row = document.getElementById('shortcutRow');
+    const sections = allSections();
+    sections.forEach(section => section.classList.add('page-section'));
+    if(row){
+      row.innerHTML = '';
+      sections.forEach((section, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'shortcut-btn';
+        btn.textContent = simpleTitle(section, index);
+        btn.onclick = () => goToPage(index);
+        row.appendChild(btn);
+      });
+    }
+    goToPage(0, false);
+  }
+  const oldReset = window.resetWorksheet;
+  window.resetWorksheet = function(){
+    if(typeof oldReset === 'function') oldReset();
+    goToPage(0, false);
+  };
+  document.addEventListener('DOMContentLoaded', buildShortcuts);
+})();
+</script>
+<script id="eslconnectsite-navigation-fix">
+(function(){
+  let currentPageIndex = 0;
+  function sections(){ return Array.from(document.querySelectorAll('main > section.page-section')); }
+  function shortcutContainer(){ return document.getElementById('shortcutRow') || document.querySelector('.shortcut-row') || document.querySelector('.section-shortcuts'); }
+  function buildShortcuts(){
+    const row = shortcutContainer();
+    if(!row) return;
+    row.innerHTML='';
+    sections().forEach((section, index)=>{
+      const b=document.createElement('button');
+      b.type='button';
+      b.className='shortcut-btn';
+      b.textContent=section.dataset.title || `Section ${index+1}`;
+      b.onclick=()=>goToPage(index);
+      row.appendChild(b);
+    });
+  }
+  window.goToPage=function(index, scrollToTop=true){
+    const all=sections();
+    if(!all.length) return;
+    currentPageIndex=Math.max(0, Math.min(index, all.length-1));
+    all.forEach((s,i)=>{s.classList.toggle('active', i===currentPageIndex); s.classList.toggle('active-section', i===currentPageIndex);});
+    const counter=document.getElementById('sectionCounter') || document.getElementById('pageCounter');
+    if(counter) counter.textContent=`Section ${currentPageIndex+1} of ${all.length}`;
+    const fill=document.getElementById('progressFill');
+    if(fill) fill.style.width=`${((currentPageIndex+1)/all.length)*100}%`;
+    document.querySelectorAll('.shortcut-btn,.shortcut').forEach((b,i)=>b.classList.toggle('active', i===currentPageIndex));
+    if(scrollToTop) document.querySelector('main').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  window.nextPage=function(){ goToPage(currentPageIndex+1); }
+  window.previousPage=function(){ goToPage(currentPageIndex-1); }
+  document.addEventListener('DOMContentLoaded', ()=>{buildShortcuts(); goToPage(0,false);});
+})();
+</script></body>
+</html>
